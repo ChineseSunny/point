@@ -8,18 +8,18 @@ using namespace std;
 
 
 struct Point{
-	string mName;//µãÃû
-	string qName;//Ó³ÉäµãÃû
-	string mTime;//Ê±¼ä¼ä¸ô
+	string mName;//ç‚¹å
+	string qName;//æ˜ å°„ç‚¹å
+	string mTime;//æ—¶é—´é—´éš”
 };
 
 int read_save()
 {
 	//open file
-	FILE *fp = fopen("E:\\CNCS\\b.csv", "r");
+	FILE *fp = fopen("E:\\b.csv", "r");
 
-	vector<Point> v;//µã½á¹¹Ìå
-	vector<string> vq;//µãÃû
+	vector<Point> v;//ç‚¹ç»“æ„ä½“
+	vector<string> vq;//ç‚¹å
 	map<string, string> m;
 
 	if (NULL == fp)
@@ -54,7 +54,7 @@ int read_save()
 		v.push_back(p);
 	}
 
-	//±éÀúµãÃû ½«Ó³ÉäµãÃû·ÅÈë vector vq
+	//éå†ç‚¹å å°†æ˜ å°„ç‚¹åæ”¾å…¥ vector vq
 	for (vector<Point>::iterator it = v.begin(); it != v.end(); ++it)
 	{
 		//cout <<"it->mName"<< it->mName << "  it->mTime" <<it->mTime << endl;
@@ -62,19 +62,19 @@ int read_save()
 		//string name = it->mName;
 		//cout << "name : " << name << endl;
 		char c_str[20] = { 0 };
-		//µãÃû
+		//ç‚¹å
 		it->mName.copy(c_str, it->mName.length(), 0);
 		//cout << "c_str" << c_str <<endl;
-		//µãÃû--> Éè±¸Ãû
+		//ç‚¹å--> è®¾å¤‡å
 		char * str = strtok(c_str, "_");
 		//cout << "str = " << str << endl;
-		//Éè±¸Ãû
+		//è®¾å¤‡å
 		string s_str = str;
-		//×ª»»Îª_QµÄ Ó³ÉäµãÃû
+		//è½¬æ¢ä¸º_Qçš„ æ˜ å°„ç‚¹å
 		string s_str_q = s_str + "_Q";
 
 		//cout << "str = "<<s_str_q <<endl;
-		//±éÀúÕÒµ½Ó³ÉäµãÃû
+		//éå†æ‰¾åˆ°æ˜ å°„ç‚¹å
 		for (vector<Point>::iterator itq = v.begin(); itq != v.end(); ++itq)
 		{
 			if (s_str_q == it->mName)
@@ -85,27 +85,27 @@ int read_save()
 		}
 	}
 
-	/* Ó³ÉäµãÃû²âÊÔ
+	/* æ˜ å°„ç‚¹åæµ‹è¯•
 	for (vector<string>::iterator itq = vq.begin(); itq != vq.end(); ++itq)
 	{
 	cout << *itq << endl;
 	}*/
 
-	//±éÀúµã
+	//éå†ç‚¹
 	for (vector<Point>::iterator it = v.begin(); it != v.end(); ++it)
 	{
 		char c_str[20] = { 0 };
-		//µãÃû
+		//ç‚¹å
 		it->mName.copy(c_str, it->mName.length(), 0);
 		//cout << "c_str" << c_str <<endl;
-		//µãÃû--> Éè±¸Ãû
+		//ç‚¹å--> è®¾å¤‡å
 		char * str = strtok(c_str, "_");
 		//cout << "str = " << str << endl;
-		//Éè±¸Ãû
+		//è®¾å¤‡å
 		string s_str = str;
-		//×ª»»Îª_QµÄ Ó³ÉäµãÃû
+		//è½¬æ¢ä¸º_Qçš„ æ˜ å°„ç‚¹å
 		string s_str_q = s_str + "_Q";
-		//±éÀúÓ³Éäµã
+		//éå†æ˜ å°„ç‚¹
 		for (vector<string>::iterator itq = vq.begin(); itq != vq.end(); ++itq)
 		{
 			if (s_str_q == *itq)
